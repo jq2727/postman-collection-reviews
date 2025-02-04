@@ -1,0 +1,14 @@
+name: Notify Slack on Review Request
+on:
+  pull_request:
+    types:[review_requested]
+
+jobs:
+  notify_slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification 
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: "A review has been requested for PR: <${{ github.event.pull_request.html_url }}|View PR> by ${{ github.event.pull_request.user.login }}."
