@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "fad9b5c7-a840-43f0-91bf-6abe8536fbe4",
+		"name": "Copart",
+		"description": "This Copart Collection will allow you to POST, PUT, DELETE Copart API Key Mappings to a Carrier/Org & Seller Codes.\n\n- The x-api-key has been pre-set set.\n    \n- When in the API Request use the dropdown to select your Method.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26972067",
+		"_collection_link": "https://himarley.postman.co/workspace/Customer-Support~8028e51d-59da-402b-a3ef-71857156a90e/collection/26972067-fad9b5c7-a840-43f0-91bf-6abe8536fbe4?action=share&source=collection_link&creator=26972067"
+	},
+	"item": [
+		{
+			"name": "UAT Copart API & Org/Seller Code Mapping",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "7rHFR3BsguBsKztI2hXuZ6vEf3JRIbho9cBKZ5CF",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"APIKey\": \"bTQV0s7NsDJdYJSX9Z011H6IL144oTo0Fxocc8w5\", //Always this Key.(Copart Key)\n \"IntegrationId\": \"{{SELLER_CODE}}\", //Seller Code to Listen to for the Carrrier.\n \"Adjuster\": \"ADJUSTER\", //Adjuster attached to Seller Code. Exclude this property if not 1:1 match with a Total Loss Adjuster. \n \"Config\": { //Optional Property.  Only added to disable; DISABLED is the only value for each.\n  \"AssignmentStrategy\": \"DISABLED\", //This controls if the Adjuster in the Copart payload is added as a Secondary Operator\n  \"NoteMention\": \"DISABLED\", //This controls if the Note Mention tags a user.\n  \"DataCaptureOnly\": true, // Allows a seller code to be \"on\" and we can validate data/match rate w/o any system updates\n  \"BaseClaim\": \"(/w+)\" // Regex filtering on \"base\" claim number\n },\n \"OrganizationId\": \"ORG_ID\", //ex:- Plymouth org Id\n \"OrganizationName\": \"ORG_NAME\" //ex:- Plymouth org name\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://oe3bc3v1u0.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+					"protocol": "https",
+					"host": [
+						"oe3bc3v1u0",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"integration-mapping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "UAT Copart API & Org/Seller Code Mapping",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"APIKey\": \"bTQV0s7NsDJdYJSX9Z011H6IL144oTo0Fxocc8w5\",  //Always this Key.(Copart Key)\n \"IntegrationId\": \"{{SELLER_CODE}}\",  //Seller Code to Listen to for the Carrrier.\n \"Adjuster\": \"ADJUSTER\",  //Adjuster attached to Seller Code.  Optional.\n \"OrganizationId\": \"ORG_ID\", // ex:- Plymouth org Id\n \"OrganizationName\": \"ORG_NAME\" // ex:- Plymouth org name\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://oe3bc3v1u0.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+							"protocol": "https",
+							"host": [
+								"oe3bc3v1u0",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"integration-mapping"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Prod Copart API & Org/Seller Code Mapping",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "44zywCONs7C5uv9kEQBrZgugAqGAJTpJuWXJF9PB",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"APIKey\": \"sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f\", //Always this Key.(Copart Key)\n    \"IntegrationId\": \"{{SELLER_CODES}}\", //Seller Code to Listen to for the Carrrier.\n    //\"Adjuster\": \"ADJUSTER\", //Adjuster attached to Seller Code. Exclude this property if not 1:1 match with a Total Loss Adjuster. \n    \"Config\": { //Optional Property.  Only added to disable; DISABLED is the only value for each.\n        //\"AssignmentStrategy\": \"DISABLED\", //This controls if the Adjuster in the Copart payload is added as a Secondary Operator\n        //\"NoteMention\": \"DISABLED\", //This controls if the Note Mention tags a user.\n        \"DataCaptureOnly\": true // Allows a seller code to be \"on\" and we can validate data/match rate w/o any system updates\n        //\"BaseClaim\": \"placeholder\" // Regex filtering on \"base\" claim number\n    },\n    \"OrganizationId\": \"01b65dd4-38db-4712-a3a9-167790a4aa88\", //ex:- Plymouth org Id\n    \"OrganizationName\": \"GAIG\" //ex:- Plymouth org name\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ls6td4kv4l.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+					"protocol": "https",
+					"host": [
+						"ls6td4kv4l",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"integration-mapping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Prod Copart API & Org/Seller Code Mapping",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"APIKey\": \"sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f\",  //Always this Key.(Copart Key)\n \"IntegrationId\": \"{{SELLER_CODE}}\",  //Seller Code to Listen to for the Carrrier.\n \"Adjuster\": \"ADJUSTER\",  //Adjuster attached to Seller Code.  Optional.\n \"OrganizationId\": \"ORG_ID\", // ex:- Plymouth org Id\n \"OrganizationName\": \"ORG_NAME\" // ex:- Plymouth org name\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ls6td4kv4l.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+							"protocol": "https",
+							"host": [
+								"ls6td4kv4l",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"integration-mapping"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Prod Update Copart API & Org/Seller Code Mapping",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "44zywCONs7C5uv9kEQBrZgugAqGAJTpJuWXJF9PB",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"APIKey\": \"sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f\", //Always this Key.(Copart Key)\n    \"IntegrationId\": \"{{SELLER_CODE}}\", //Seller Code to Listen to for the Carrrier.\n    \"Adjuster\": \"{{ADJUSTER}}\", //Adjuster attached to Seller Code. Exclude this property if not 1:1 match with a Total Loss Adjuster. \n    \"Config\": { //Optional Property.  Only added to disable; DISABLED is the only value for each.\n        \"AssignmentStrategy\": \"{{asValue}}\", //This controls if the Adjuster in the Copart payload is added as a Secondary Operator.  DISABLED is the only value.\n        \"NoteMention\": \"{{nmValue}}\", //This controls if the Note Mention tags a user.  Disabled is the only value.\n        \"DataCaptureOnly\": {{dcoValue}}, // Allows a seller code to be \"on\" and we can validate data/match rate w/o any system updates.  Boolean value.\n        \"BaseClaim\": \"{{regexValue}}\" // Regex filtering on \"base\" claim number\n    },\n    \"OrganizationId\": \"{{orgIdValue}}\", //ex:- Plymouth org Id\n    \"OrganizationName\": \"{{orgNameValue}}\" //ex:- Plymouth org name\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ls6td4kv4l.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+					"protocol": "https",
+					"host": [
+						"ls6td4kv4l",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"integration-mapping"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Prod Copart API & Org/Seller Code Mapping",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"APIKey\": \"sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f\",  //Always this Key.(Copart Key)\n \"IntegrationId\": \"{{SELLER_CODE}}\",  //Seller Code to Listen to for the Carrrier.\n \"Adjuster\": \"ADJUSTER\",  //Adjuster attached to Seller Code.  Optional.\n \"OrganizationId\": \"ORG_ID\", // ex:- Plymouth org Id\n \"OrganizationName\": \"ORG_NAME\" // ex:- Plymouth org name\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ls6td4kv4l.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+							"protocol": "https",
+							"host": [
+								"ls6td4kv4l",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"integration-mapping"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Prod Update Copart API & Org/Seller Code Mapping Copy",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "44zywCONs7C5uv9kEQBrZgugAqGAJTpJuWXJF9PB",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "x-api-key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ls6td4kv4l.execute-api.us-east-1.amazonaws.com/dev/integration-mapping?APIKey=sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f&IntegrationId={{SELLER_CODE}}",
+					"protocol": "https",
+					"host": [
+						"ls6td4kv4l",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"integration-mapping"
+					],
+					"query": [
+						{
+							"key": "APIKey",
+							"value": "sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f"
+						},
+						{
+							"key": "IntegrationId",
+							"value": "{{SELLER_CODE}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Prod Copart API & Org/Seller Code Mapping",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"APIKey\": \"sWiD29gDzg6BkRdMAlpzJJigBTUbEpgfSkhZnp4f\",  //Always this Key.(Copart Key)\n \"IntegrationId\": \"{{SELLER_CODE}}\",  //Seller Code to Listen to for the Carrrier.\n \"Adjuster\": \"ADJUSTER\",  //Adjuster attached to Seller Code.  Optional.\n \"OrganizationId\": \"ORG_ID\", // ex:- Plymouth org Id\n \"OrganizationName\": \"ORG_NAME\" // ex:- Plymouth org name\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ls6td4kv4l.execute-api.us-east-1.amazonaws.com/dev/integration-mapping",
+							"protocol": "https",
+							"host": [
+								"ls6td4kv4l",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"integration-mapping"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SELLER_CODE",
+			"value": "{{SELLER_CODE}}",
+			"type": "string"
+		}
+	]
+}
